@@ -1,3 +1,6 @@
+# Innovation Lab Project
+
+## Description
 The Vault Transit secrets engine allows Vault to function as an encryption-as-a-service, encrypting and decrypting data stored outside of Vault.
 
 In this track, you will use the Transit secrets engine with an Express-based web app and a NoSQL database (MongoDB). Using this web app we will perform encryption-as-a-service, more specifically, encrypting a user's password and storing it. We also perform decryption-as-a-service to check for a successful login on our application.
