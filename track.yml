@@ -1,0 +1,24 @@
+slug: encryption-as-a-service
+id: 4x9tcx7v0kzn
+type: track
+title: Encryption as a Service
+teaser: Demonstrate how Vault Transit Engine encrypts data.
+description: |-
+  The Vault Transit secrets engine allows Vault to function as an encryption-as-a-service, encrypting and decrypting data stored outside of Vault.
+
+  In this track, you will use the Transit secrets engine with an Express-based web app and a NoSQL database (MongoDB). Using this web app we will perform encryption-as-a-service, more specifically, encrypting a user's password and storing it. We also perform decryption-as-a-service to check for a successful login on our application.
+icon: https://storage.googleapis.com/instruqt-hashicorp-tracks/logo/vault.png
+level: intermediate
+tags:
+- vault
+- ' encryption-as-a-service'
+owner: hashicorp
+developers:
+- syed.quadri@hashicorp.com
+- anthony.benjamin@hashicorp.com
+- george.ret@hashicorp.com
+- gilberto@hashicorp.com
+private: true
+published: true
+maintenance: true
+checksum: "3373407025441878598"

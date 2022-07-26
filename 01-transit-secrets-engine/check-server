@@ -1,0 +1,11 @@
+set -euxo pipefail
+
+export VAULT_ADDR='http://127.0.0.1:8200'
+vault read transit/keys/my-key
+if [ $? -eq 0 ]
+then
+    exit 0
+else
+    fail-message "Failed to read key, are you sure the Transit Secrets Engine has been enabled?"
+    exit 1
+fi

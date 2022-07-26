@@ -1,0 +1,42 @@
+#!/bin/bash
+set -euxo pipefail
+
+until [ -f /opt/instruqt/bootstrap/host-bootstrap-completed ]; do
+    echo "Waiting for Instruqt bootstrap to complete"
+    sleep 1
+done
+
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
+## 1- Add package to Ubuntu:
+sudo apt-get install build-essential -y
+
+sudo systemctl start mongod
+sudo systemctl enable mongod
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install v16.16.0
+nvm alias default v16.16.0
+nvm use default
+nvm install-latest-npm
+
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install vault
+
+nohup vault server -dev -dev-root-token-id=root &> /dev/null &
+# sleep 3
+# export VAULT_TOKEN=root
+# export VAULT_ADDR=http://127.0.0.1:8200
+# vault secrets enable transit
+# vault write -f transit/keys/my-key
+
+export NODE_ENV="production"
+
+git clone https://github.com/hashanthony/internvault.git
