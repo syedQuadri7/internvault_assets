@@ -11,7 +11,7 @@ In this track, you will use the Transit secrets engine with an Express-based web
 | Documentation | Encryption as a Service - [Demo Guide][2] |
 | Slides | Encryption as a Service - [Presentation][3] |
 | Recording | Encryption as a Service - [Recording][4] |
-| GitHub Assets | Encryption as a Service - [Assets][5] |
+| Internvault Repository | Encryption as a Service - [Repository][5] |
 | Contributors | Anthony Benjamin, Syed Quadri, George Abot |
 
 ## Innovation Lab: How to engage
@@ -28,6 +28,6 @@ In this track, you will use the Transit secrets engine with an Express-based web
 [2]: <https://docs.google.com/document/d/1XFHnyoIBxCUC6yKq2lDr9hai8B6-dfNjGhQVweu9YmY/edit?usp=sharing> "Encryption as a Service - Vault Transit Secrets Engine Documentation"
 [3]: <https://docs.google.com/presentation/d/1DhUmu_bh32tohvc_ON33MY_yEOKnE_jE8KRcvUYfJQA/edit?usp=sharing> "Encryption as a Service - Vault Transit Secrets Engine Presentation"
 [4]: <TBD> "Encryption as a Service - Video Walkthrough"
-[5]: <https://github.com/syedQuadri7/internvault_assets> "Encryption as a Service - Assets"
+[5]: <https://github.com/hashanthony/internvault> "Encryption as a Service"
 [6]: <https://hashicorp.wufoo.com/forms/field-requests-products-assets> "Field Request form"
 [7]: <https://hashicorp.slack.com/archives/CGYB4R3NX> "proj-instruct"
