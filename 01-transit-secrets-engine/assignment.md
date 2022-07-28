@@ -12,18 +12,33 @@ notes:
 
 
     <center><img src="https://i.gifer.com/5LE3.gif">
+- type: text
+  contents: |
+    <p align="center">
+      <img src="../assets/vault-transit-engine-deck-02.png" style="height:500px;">
+    </p>
+- type: text
+  contents: |
+    <p align="center">
+      <img src="../assets/vault-transit-engine-deck-03.png" style="height:500px;">
+    </p>
+- type: text
+  contents: |
+    <p align="center">
+      <img src="../assets/vault-transit-engine-deck-04.png" style="height:500px;">
+    </p>
 tabs:
 - title: Vault CLI
   type: terminal
   hostname: server
 difficulty: basic
-timelimit: 600
+timelimit: 1200
 ---
 The first step of your mission is to understand the Transit Secrets Engine of Vault. For your ease Vault is already running in dev mode. The dev server is a built-in, pre-configured server that is not very secure but useful for playing with Vault locally.
 
 <p style="color:rgb(255, 99, 71);"><u>Step 1:</u></p>
 
-To check is Vault is running enter this into the Vault CLI tab. This will show you a list of commands you can run with Vault. You can also run `vault -help`
+To check if Vault is running enter this into the Vault CLI tab. This will show you a list of commands you can run with Vault. You can also run `vault -help`
 ```
 vault
 ```
@@ -84,23 +99,24 @@ Encrypt some plaintext data using the `/encrypt` endpoint with a named key
 ```
 vault write transit/encrypt/my-key plaintext=$(base64 <<< "my secret data")
 ```
-The returned ciphertext starts with vault:v1:. The first prefix (vault) identifies that it has been wrapped by Vault. The v1 indicates the key version 1 was used to encrypt the plaintext; therefore, when you rotate keys, Vault knows which version to use for decryption.
+The returned ciphertext starts with `vault:v1:`. The first prefix (vault) identifies that it has been wrapped by Vault. The v1 indicates the key version 1 was used to encrypt the plaintext; therefore, when you rotate keys, Vault knows which version to use for decryption.
 
 <p style="color:rgb(255, 99, 71);"><u>Step 8:</u></p>
 
 Decrypt a piece of data using the `/decrypt` endpoint with a named key
+
+<p style="color:yellow;"><u>Note: Remember to replace the ciphertext with the ciphertext in your Vault CLI tab.</u></p>
+
 ```
-vault write transit/decrypt/my-key ciphertext=vault:v1:8SDd3WHDOjf7mq69CyCqYjBXAiQQAVZRkFM13ok481zoCmHnSeDX9vyf7w==
+vault write transit/decrypt/my-key ciphertext=<YOUR_CIPHER_TEXT>
 ```
-<p style="color:rgb(255, 131, 206);"><b><u>Note: Remember to replace the above ciphertext with the ciphertext in your Vault CLI tab.</u></b></p>
 
 <p style="color:rgb(255, 99, 71);"><u>Step 9:</u></p>
 
 After decryption your result will be base64-encoded. To get the raw plaintext run:
 ```
-base64 --decode <<< "bXkgc2VjcmV0IGRhdGEK"
+base64 --decode <<< "<YOUR_BASE64_ENCODED>"
 ```
-Note: If you changed the plain text in Step 7 then this encoded string will be different.
 
 Now that you have learned the basic of encryption and using the Transit secrets engine we can move on to the real deal.
 
